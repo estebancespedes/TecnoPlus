@@ -1,7 +1,7 @@
 class Dispositivo():
     """ La clase dispositivo con su respectivo constructor sirve para almacenar todos esos valores que son respectivos
         a cada dispositivo de manera independiente"""
-    def __init__(self, codigo, nombre, tipo, precio, unidadesDisp, porcentajeIVA, umbral, precioVenta,):
+    def __init__(self, codigo, nombre, tipo, precio, unidadesDisp, porcentajeIVA, umbral, precioVenta):
         self.__codigo=codigo
         self.__nombre=nombre
         self.__tipo=tipo

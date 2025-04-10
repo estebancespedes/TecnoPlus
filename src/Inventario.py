@@ -16,16 +16,16 @@ class inventario:
         """ Cada que se use este metodo (el usuario desee agregar nuevos articulos) el programa va a crear un nuevo objeto de tipo Dispositivo
             y lo va a guardar en la casilla correspondiente (la variable ult se encarga de asignar esta posicion)"""
         
-        for i in range (self.__numDispositivos-1):
+        for i in range (self.__numDispositivos):
             if (self.inventario[i].codigo == codigo):
                  return False
-        self.inventario[self.__numDispositivos] = Dispositivo(codigo,nombre,tipo, precio, precioVenta, unidadesDisp, porcIVA, umbral)
+        self.inventario[self.__numDispositivos] = Dispositivo(codigo,nombre,tipo,precio,unidadesDisp,porcIVA,umbral,precioVenta)
         self.__numDispositivos += 1
         return True
     
     def buscarDispositivo(self,codigo):
-        for i in range(self.__numDispositivos-1):
-            if (self.inventario[i] == codigo):
+        for i in range(self.__numDispositivos):
+            if (self.inventario[i].codigo == codigo):
                 return self.inventario[i]
         return None
 
@@ -35,8 +35,8 @@ class inventario:
             compara las unidades disponibles con la cantidad que el usuario pretende comprar 
             si hay unidades suficientes retorna true de lo contrario false"""
         
-        for i in range (self.__numDispositivos-1):
-            if ((codigo == self.inventario[i].codigo)&(cantidad<= self.inventario[i])):
+        for i in range (self.__numDispositivos):
+            if ((codigo == self.inventario[i].codigo)&(cantidad<= self.inventario[i].unidadesDisp)):
                 return True
         return False
     
@@ -45,10 +45,10 @@ class inventario:
             la idea es que se use cada vez que se modifiquen las unidades en el inventario de cada producto y el metodo por si solo 
             si hay menos unidades que el umbral va a mostrar el respectivo mensaje"""
         
-        for i in range (self.__numDispositivos-1):
+        for i in range (self.__numDispositivos):
             if (codigo == self.inventario[i].codigo):
                 if(self.inventario[i].unidadesDisp > self.inventario[i].umbral):
-                    return "el dispositivo: "+self.inventario[i].nombre+" cuenta con: "+self.inventario[i].unidadesDisp+" unidades disponibles en Inventario"
+                    return "el dispositivo: "+self.inventario[i].nombre+" cuenta con: "+str(self.inventario[i].unidadesDisp)+" unidades disponibles en Inventario"
                 else:
                     return  "el dispositivo: "+self.inventario[i].nombre+" cuenta con: "+self.inventario[i].unidadesDisp+" unidades disponibles en Inventario, Es necesario solicitar mas"
             else:
@@ -61,13 +61,13 @@ class inventario:
         match(opcion):
             case 0:
                 """opcion 0: sirve para registrar en el inventario del producto las unidades retiradas del inventario"""
-                for i in range(self.__numDispositivos-1):
+                for i in range(self.__numDispositivos):
                     if (self.inventario[i].codigo == codigo):
                         self.inventario[i].unidadesDisp -= cantidad
                 
             case 1:
                 """opcion 1: sirve para registrar las unidades que ingresan a la bodega de la empresa y sumarlas a las unidades del respectivo product"""
-                for i in range(self.__numDispositivos-1):
+                for i in range(self.__numDispositivos):
                     if (self.inventario[i].codigo == codigo):
                         self.inventario[i].unidadesDisp += cantidad
                         return "Inventario actualizado correctamente"
@@ -76,18 +76,18 @@ class inventario:
         """ Este metodo recorre todo el vector de objetos y para limpiarlo le asigna el valor null a la casilla
             se usa luego de generar el informe para volver a reunir datos para el informe del siguiente mes"""
         
-        for i in range (self.__numDispositivos-1):
+        for i in range (self.__numDispositivos):
             self.inventario[i].cantidadVendida = 0
             self.inventario[i].gananciaPorCantidad = 0
 
     def agregarCantidadVendida(self, codigo,cantidad):
         """ Este metodo se utiliza para llevar un conteo de la cantidad de dispositivos vendida y calcular luego para el informe
             por lo general debe usarse despues de cada venta"""
-        for i in range(self.__numDispositivos-1):
+        for i in range(self.__numDispositivos):
             if (codigo ==  self.inventario[i].codigo):
                 self.inventario[i].cantidadVendida += cantidad
 
     def calcularGanancias(self):
         """sirve para calcular las ganancias objeto por objeto registrado y luego llevarlo al informe"""
-        for i in range (self.__numDispositivos-1):
+        for i in range (self.__numDispositivos):
             self.inventario[i].calcularGanancias()

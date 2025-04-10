@@ -66,9 +66,9 @@ class Venta():
             self.__precio += self.__Productos[i].precioIVA*self.__cantidades[i]
 
     def imprimirFactura(self):
-        mensaje  = ("producto").ljust(20) + ("cantidad").ljust(5) + ("precio por unidad").ljust(10)
-        for i in range(self.__ultProducto-1):
-            mensaje += str(self.__Productos[i].nombre).ljust(20) + str(self.__cantidades[i]).ljust(5) + str(self.__Productos[i].precioIVA).ljust(10)
+        mensaje  = ("producto").ljust(20) + ("cantidad").ljust(10) + ("precio por unidad").ljust(10) 
+        for i in range(self.__ultProducto):
+            mensaje += "\n"+str(self.__Productos[i].nombre).ljust(20) + str(self.__cantidades[i]).ljust(10) + str(self.__Productos[i].precioIVA).ljust(10)
         self.calcularPrecioTotal
-        mensaje += "\n \nPrecio Total: " + self.__precio
+        mensaje += "\n \nPrecio Total: " + str(self.__precio)
         return mensaje
