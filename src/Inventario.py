@@ -110,7 +110,7 @@ class inventario:
             case 1:
                 #en caso de querer guardar informacion de el inventario de productos en un archivo
                 try:
-                    file= open("ficheros\\inventario.csv","w",encoding="utf-8")
+                    file= open("fichero\\inventario.csv","w",encoding="utf-8")
                     file.write("Codigo;Nombre;Tipo;Precio;Precio Venta;Unidades Disp;porcentaje IVA;Umbral;Ganancia;Precio IVA;Cantidad Vendida;Ganancia por Cantidad\n")
                     for i in range(self.__numDispositivos):
                         linea = self.inventario[i].codigo+";"+self.inventario[i].nombre+";"+self.inventario[i].tipo+";"+str(self.inventario[i].precio)+";"+str(self.inventario[i].precioVenta)+";"+str(self.inventario[i].unidadesDisp)+";"+str(self.inventario[i].porcentajeIVA)+";"+str(self.inventario[i].umbral)+";"+str(self.inventario[i].ganancia)+";"+str(self.inventario[i].precioIVA)+";"+str(self.inventario[i].cantidadVendida)+";"+str(self.inventario[i].gananciaPorCantidades)+"\n"
@@ -123,7 +123,7 @@ class inventario:
                     file.close()
             case 2:
                 try:
-                    file= open("ficheros\\inventario.csv","r")
+                    file= open("fichero\\inventario.csv","r")
                     linea = file.readline()
                     linea = file.readline()
                     while(linea != ""): 
