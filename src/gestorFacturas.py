@@ -9,5 +9,5 @@ class gestorFacturas:
     def generarVenta(self, dispositivos:np.array, cantidades:np.array,ult:int):
         self.ListaFacturas[self.ultFactura] = Venta((self.ultFactura+1),dispositivos,cantidades,ult)
         self.ListaFacturas[self.ultFactura].calcularPrecioTotal()
-        input(("").ljust(50,"-")+(self.ListaFacturas[self.ultFactura].imprimirFactura())+("").ljust(50,"-")+"\nPresione enter para continuar")
+        input(("").ljust(50,"-")+"\n"+(self.ListaFacturas[self.ultFactura].imprimirFactura())+"\n"+("").ljust(50,"-")+"\nPresione enter para continuar")
         os.system("cls")
