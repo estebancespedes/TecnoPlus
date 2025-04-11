@@ -24,6 +24,17 @@ class inventario:
         self.__numDispositivos += 1
         return True
     
+    def agregarDispositivo(self,codigo, nombre, tipo, precio, precioVenta, unidadesDisp, porcIVA, umbral,cantidadVendida, gananciaPorCantidades):
+        """ Cada que se use este metodo (el usuario desee agregar nuevos articulos) el programa va a crear un nuevo objeto de tipo Dispositivo
+            y lo va a guardar en la casilla correspondiente (la variable ult se encarga de asignar esta posicion)"""
+        
+        for i in range (self.__numDispositivos):
+            if (self.inventario[i].codigo == codigo):
+                 return False
+        self.inventario[self.__numDispositivos] = Dispositivo(codigo,nombre,tipo,precio,unidadesDisp,porcIVA,umbral,precioVenta,cantidadVendida, gananciaPorCantidades)
+        self.__numDispositivos += 1
+        return True
+
     def buscarDispositivo(self,codigo):
         for i in range(self.__numDispositivos):
             if (self.inventario[i].codigo == codigo):
@@ -65,6 +76,7 @@ class inventario:
                 for i in range(self.__numDispositivos):
                     if (self.inventario[i].codigo == codigo):
                         self.inventario[i].unidadesDisp -= cantidad
+                self.verificarUmbral(codigo)
                 
             case 1:
                 """opcion 1: sirve para registrar las unidades que ingresan a la bodega de la empresa y sumarlas a las unidades del respectivo product"""
@@ -72,7 +84,7 @@ class inventario:
                     if (self.inventario[i].codigo == codigo):
                         self.inventario[i].unidadesDisp += cantidad
                         return True
-                    
+          
     def limpiarVentas(self):
         """ Este metodo recorre todo el vector de objetos y para limpiarlo le asigna el valor null a la casilla
             se usa luego de generar el informe para volver a reunir datos para el informe del siguiente mes"""
@@ -113,10 +125,11 @@ class inventario:
                 try:
                     file= open("ficheros\\inventario.csv","r")
                     linea = file.readline()
-                    while(linea != ""):
-                        linea = file.readline()
+                    linea = file.readline()
+                    while(linea != ""): 
                         a = linea.split(";")
-                        self.agregarDispositivo(a[0],a[1],a[2],int(a[3]),int(a[4]),int(a[5]),int(a[6]),int(a[7]))
+                        self.agregarDispositivo(a[0],a[1],a[2],int(a[3]),int(a[4]),int(a[5]),int(a[6]),int(a[7]),int(a[10]),int(a[11].replace("\n","")))
+                        linea = file.readline()
                     return True
                 except Exception as error:
                     print(error)

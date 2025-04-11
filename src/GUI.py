@@ -1,7 +1,7 @@
 from gestorPrincipal import gestorPrincipal
 import os
-"""este es el archivo fuente de el proyecto con la mayor parte de la interfaz de usuario"""
 os.system("cls")
+"""este es el archivo fuente de el proyecto con la mayor parte de la interfaz de usuario"""
 gp = gestorPrincipal()
 gp.sacarinfoInventario()
 opcion = "1"

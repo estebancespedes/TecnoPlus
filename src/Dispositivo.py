@@ -15,6 +15,20 @@ class Dispositivo():
         self.__cantidadVendida=0
         self.__gananciaPorCantidades=0
 
+    def __init__(self, codigo, nombre, tipo, precio, unidadesDisp, porcentajeIVA, umbral, precioVenta, cantidadVendida, gananciaPorCantidades):
+        self.__codigo=codigo
+        self.__nombre=nombre
+        self.__tipo=tipo
+        self.__precio=precio
+        self.__precioVenta=precioVenta
+        self.__unidadesDisp=unidadesDisp
+        self.__porcentajeIVA=porcentajeIVA
+        self.__umbral=umbral
+        self.__ganancia=(self.__precioVenta - self.__precio)
+        self.__precioIVA=((self.__precioVenta*self.__porcentajeIVA)/100)+self.__precioVenta
+        self.__cantidadVendida=cantidadVendida
+        self.__gananciaPorCantidades=gananciaPorCantidades
+
     @property
     def codigo(self):
         return self.__codigo

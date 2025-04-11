@@ -1,4 +1,4 @@
 Codigo;Nombre;Tipo;Precio;Precio Venta;Unidades Disp;porcentaje IVA;Umbral;Ganancia;Precio IVA;Cantidad Vendida;Ganancia por Cantidad
 21;A55 5G;Celular;150;175;25;10;3;25;192.5;0;0
-10;A33 5G;Celular;150;175;24;10;3;25;192.5;1;0
-27;A22 5G;Celular;150;175;24;10;3;25;192.5;1;0
+10;A33 5G;Celular;150;175;25;10;3;25;192.5;1;0
+27;A22 5G;Celular;150;175;25;10;3;25;192.5;25;0

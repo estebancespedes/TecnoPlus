@@ -37,6 +37,7 @@ class gestorPrincipal:
                         self.gestInv.actualizarInventario(0,codigo,cantidad)
                         input(("").ljust(50,"*")+"\n el producto se agrego correctamente\n"+("").ljust(50,"*")+"\nPresione enter para continuar")
                         os.system("cls")
+                        print(self.gestInv.verificarUmbral(codigo))
                         listProductos[ultimDisp] = self.gestInv.buscarDispositivo(codigo)
                         listCantidades[ultimDisp] = cantidad
                         ultimDisp +=1
