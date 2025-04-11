@@ -1,8 +1,9 @@
 from gestorPrincipal import gestorPrincipal
 import os
 """este es el archivo fuente de el proyecto con la mayor parte de la interfaz de usuario"""
+os.system("cls")
 gp = gestorPrincipal()
-
+gp.sacarinfoInventario()
 opcion = "1"
 while(opcion != "3"):
     opcion =input((("").ljust(50,"-"))+"\n1.Menu de ventas\n2.Menu de inventario\n3.Salir\n"+(("").ljust(50,"-"))+"\nIngrese la opcion deseada: ")
@@ -60,6 +61,7 @@ while(opcion != "3"):
                     os.system("cls")
         case "3":
             #opcion 3: salir
+            gp.guardarinfoInventario()
             break
         case _:
             #cualquier otro caso: mensaje de error

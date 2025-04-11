@@ -13,7 +13,7 @@ class Dispositivo():
         self.__ganancia=(self.__precioVenta - self.__precio)
         self.__precioIVA=((self.__precioVenta*self.__porcentajeIVA)/100)+self.__precioVenta
         self.__cantidadVendida=0
-        self.__gananciaPorCantidad=0
+        self.__gananciaPorCantidades=0
 
     @property
     def codigo(self):
@@ -104,12 +104,12 @@ class Dispositivo():
         self.__cantidadVendida=cantidadVendida
 
     @property
-    def gananciaPorCantidad(self):
-        return self.__gananciaPorCantidad
+    def gananciaPorCantidades(self):
+        return self.__gananciaPorCantidades
 
-    @gananciaPorCantidad.setter
+    @gananciaPorCantidades.setter
     def gananciaPorCantidad(self,gananciaPorCantidad):
-        self.__gananciaPorCantidad=gananciaPorCantidad
+        self.__gananciaPorCantidades=gananciaPorCantidad
 
     def __str__(self):
         return str(self.codigo)+' '+str(self.nombre)+' '+str(self.tipo)+' '+str(self.precio)+' '+str(self.unidadesDisp)+' '+str(self.porcentajeIVA)+' '+str(self.umbral)+' '+str(self.precioIVA)+' '+str(self.ganancia)+' '+str(self.precioVenta)+' '+str(self.cantidadVendida)+' '+str(self.gananciaPorCantidad)
@@ -119,6 +119,6 @@ class Dispositivo():
         """ Este sirve para generar el informe, multiplica la ganancia del dispositivo por unidad y la multiplica por las cantidades que se vendieron
             se utiliza a la hora de generar el informe del mes"""
     
-        self.__gananciaPorCantidad = self.__ganancia * self.__cantidadVendida
+        self.__gananciaPorCantidades = self.__ganancia * self.__cantidadVendida
         pass 
 

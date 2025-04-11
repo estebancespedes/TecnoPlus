@@ -1,5 +1,6 @@
 import numpy as np
 from Dispositivo import Dispositivo
+import os
 class inventario:
     """ La clase Inventario como su nombre lo dice tiene un vector que guarda todos los dispositivos que van entrando al almacen de la empresa
         cada dispositivo tiene sus respectivos datos y son almacenados en el vector Inventario"""
@@ -91,3 +92,34 @@ class inventario:
         """sirve para calcular las ganancias objeto por objeto registrado y luego llevarlo al informe"""
         for i in range (self.__numDispositivos):
             self.inventario[i].calcularGanancias()
+
+    def almacenarInventario(self, opcion):
+        match(opcion):
+            case 1:
+                #en caso de querer guardar informacion de el inventario de productos en un archivo
+                try:
+                    file= open("ficheros\\inventario.csv","w",encoding="utf-8")
+                    file.write("Codigo;Nombre;Tipo;Precio;Precio Venta;Unidades Disp;porcentaje IVA;Umbral;Ganancia;Precio IVA;Cantidad Vendida;Ganancia por Cantidad\n")
+                    for i in range(self.__numDispositivos):
+                        linea = self.inventario[i].codigo+";"+self.inventario[i].nombre+";"+self.inventario[i].tipo+";"+str(self.inventario[i].precio)+";"+str(self.inventario[i].precioVenta)+";"+str(self.inventario[i].unidadesDisp)+";"+str(self.inventario[i].porcentajeIVA)+";"+str(self.inventario[i].umbral)+";"+str(self.inventario[i].ganancia)+";"+str(self.inventario[i].precioIVA)+";"+str(self.inventario[i].cantidadVendida)+";"+str(self.inventario[i].gananciaPorCantidades)+"\n"
+                        file.write(linea)
+                    return True
+                except Exception as error:
+                    print(error)
+                    return False
+                finally:
+                    file.close()
+            case 2:
+                try:
+                    file= open("ficheros\\inventario.csv","r")
+                    linea = file.readline()
+                    while(linea != ""):
+                        linea = file.readline()
+                        a = linea.split(";")
+                        self.agregarDispositivo(a[0],a[1],a[2],int(a[3]),int(a[4]),int(a[5]),int(a[6]),int(a[7]))
+                    return True
+                except Exception as error:
+                    print(error)
+                    return False
+                finally:
+                    file.close()

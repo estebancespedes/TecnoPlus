@@ -52,5 +52,10 @@ class gestorPrincipal:
 
         self.gesFac.generarVenta(listProductos,listCantidades,ultimDisp)
 
+    def guardarinfoInventario(self):
+        self.gestInv.almacenarInventario(1)
+    def sacarinfoInventario(self):
+        self.gestInv.almacenarInventario(2)
+
     def generarInformeMensual(self):
         pass
