@@ -9,5 +9,3 @@ class gestorFacturas:
         self.ListaFacturas[self.ultFactura] = Venta((self.ultFactura+1),dispositivos,cantidades,ult)
         self.ListaFacturas[self.ultFactura].calcularPrecioTotal()
         print(self.ListaFacturas[self.ultFactura].imprimirFactura())
-
-    

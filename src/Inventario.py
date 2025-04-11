@@ -70,7 +70,7 @@ class inventario:
                 for i in range(self.__numDispositivos):
                     if (self.inventario[i].codigo == codigo):
                         self.inventario[i].unidadesDisp += cantidad
-                        return "Inventario actualizado correctamente"
+                        return True
                     
     def limpiarVentas(self):
         """ Este metodo recorre todo el vector de objetos y para limpiarlo le asigna el valor null a la casilla
