@@ -9,7 +9,7 @@ class gestorPrincipal:
 
     def agregarAInventario(self,codigo,nombre,tipo,precio,precioVenta,unidadesDisp,porcIVA,umbral):
         if(None == self.gestInv.buscarDispositivo(codigo)):
-            self.gestInv.agregarDispositivo(codigo,nombre,tipo,precio,precioVenta,unidadesDisp,porcIVA,umbral)
+            self.gestInv.agregarDispositivo(codigo,nombre,tipo,precio,precioVenta,unidadesDisp,porcIVA,umbral,0,0)
             return True
         else:
             return False
